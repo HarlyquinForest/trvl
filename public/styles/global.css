@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;500;600;700;900&display=swap");
+* {
+  padding: 0%;
+  margin: 0%;
+  direction: rtl;
+}
+body{
+  background-color: #000;
+  overflow-x:hidden;
+}
+.fading-black-gradient {
+  background: rgba(0, 0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
