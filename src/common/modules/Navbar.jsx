@@ -31,10 +31,10 @@ const Navbar = () => {
           {windowSize == "lg" ? (
             <>
               <div className="flex flex-row justify-center gap-20 w-8/12">
-                <NavItem url="/" title="اخبار" />
-                <NavItem url="/" title="تورها" />
-                <NavItem url="/" title="وبلاگ" />
-                <NavItem url="/" title="تماس" />
+                <NavItem url="/news" title="اخبار" />
+                <NavItem url="/tours" title="تورها" />
+                <NavItem url="/blog" title="وبلاگ" />
+                <NavItem url="/contact" title="تماس" />
               </div>
               <div className="flex flex-row justify-between items-center gap-4 px-4 w-fit ">
                 <Search />
@@ -81,10 +81,10 @@ const Navbar = () => {
                     className="absolute z-20 w-full h-full top-0 right-0 bg-dark-half-transparent firefox:bg-black backdrop-blur-lg"
                   >
                     <div className="flex flex-col justify-center items-center mt-10 py-6">
-                      <NavItem url="/" title="اخبار" />
-                      <NavItem url="/" title="تورها" />
-                      <NavItem url="/" title="وبلاگ" />
-                      <NavItem url="/" title="تماس" />
+                      <NavItem url="/news" title="اخبار" />
+                      <NavItem url="/tours" title="تورها" />
+                      <NavItem url="/blog" title="وبلاگ" />
+                      <NavItem url="/contact" title="تماس" />
                       <NavItem url="/login" title="ورود/ثبت نام" />
                     </div>
                   </motion.div>
