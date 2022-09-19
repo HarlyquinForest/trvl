@@ -1,6 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { useState, useEffect, useRef, useCallback } from "react";
-import { Flipper, Flipped, spring } from "react-flip-toolkit";
+import { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 import { useSelector } from "react-redux";
 import Rating from "../components/Star";
@@ -9,15 +7,12 @@ import Slide from "../components/Slide";
 function Carousel(props) {
   const windowSize = useSelector((state) => state.windowSize.value);
   const [slideTotal, setSlideTotal] = useState(0);
-  const [slidePrev, setSidePrev] = useState(-1);
   const [slides, setSlides] = useState([]);
   const [queue, setQueue] = useState([]);
-  const [gap, setGap] = useState(windowSize === "lg" ? 280 : 150);
-  const interval = useRef(null);
-  const nextRef = useRef();
+  const gap = windowSize === "lg" ? 280 : 150
   const handlers = useSwipeable({
-    onSwipedLeft: () => {},
-    onSwipedRight: () => {},
+    onSwipedLeft: () => { },
+    onSwipedRight: () => { },
     preventDefaultTouchmoveEvent: true,
     tackMouse: true,
   });
@@ -38,7 +33,6 @@ function Carousel(props) {
         slides[i].style = { right: `${x}px` };
       }
     }
-    setSidePrev(props.slideCurrent);
   };
   useEffect(() => {
     const locSlides = [];
