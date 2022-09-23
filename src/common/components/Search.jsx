@@ -47,7 +47,7 @@ const Search = () => {
           initial={TopToDownLg.init}
           animate={TopToDownLg.show}
           exit={TopToDownLg.exit}
-          className="absolute block z-20 p-4 w-11/12 lg:w-1/2 max-h-screen rounded-lg left-5 lg:left-32 top-16 bg-dark-half-transparent firefox:bg-firefox-modal-bg backdrop-blur-lg shadow-lg"
+          className="absolute block z-20 p-4 w-full lg:w-1/2 max-h-screen rounded-lg left-0 lg:left-32 top-16 bg-dark-half-transparent firefox:bg-firefox-modal-bg backdrop-blur-lg shadow-lg"
         >
           <div className="flex flex-col justify-start gap-8 items-start text-sm">
             <div className="flex flex-row gap-4 w-full px-2">
