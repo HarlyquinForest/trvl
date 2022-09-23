@@ -17,11 +17,11 @@ const Background = ({ img, active, keyProp }) => {
         initial={FadeToExist.init}
         animate={animate}
         exti={FadeToExist.exit}
-        className="w-full h-full -z-10 absolute overflow-y-hidden"
+        className="w-screen h-[150vh] -z-10 absolute overflow-y-hidden"
         style={{
           backgroundImage: `url(${base_path_prefix}${img})`,
           backgroundSize: "cover",
-          backgroundPosition: "50%",
+          backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
         }}
       >
