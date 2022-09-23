@@ -8,8 +8,8 @@ const WindowSizeContext = ({ children }) => {
   const onWindowResize = useWindowResize();
 
   const setWindowSize = (size) => {
-    if (size <= 768) dispatch(setWindowSmall());
-    else if (size > 768 && size <= 1200) dispatch(setWindowMedium());
+    if (size < 768) dispatch(setWindowSmall());
+    else if (size > 768 && size <= 1024) dispatch(setWindowMedium());
     else dispatch(setWindowLarge());
   };
   onWindowResize(() => {
