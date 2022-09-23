@@ -3,6 +3,8 @@ import { useState } from "react";
 import Background from "../common/modules/Background";
 import Logo from "../common/components/Logo";
 import GlowingButton from "../common/components/GlowingButton";
+import { TopToDownChange } from "../common/components/Varients";
+import { AnimatePresence, motion } from "framer-motion";
 import { login } from "../data/data";
 
 const Page = () => {
@@ -51,45 +53,62 @@ const Page = () => {
               ورود
             </h1>
           </div>
-          {index == 0 ? (
-            <div className="flex flex-col justify-center items-center gap-8">
-              <h1 className="text-sm xl:text-xl w-full xl:w-2/3 text-center ">
-                {login.signup.text}
-              </h1>
-              <input
-                className="w-full xl:w-2/3 p-2 px-8 rounded-full bg-half-transparent focus:bg-white text-black focus:outline-none"
-                style={{ direction: "ltr" }}
-                type="email"
-                name="email"
-                id="email-input"
-                placeholder="example@mail.com"
-              />
-              <GlowingButton url="/" bgColor="#12a1ff" title="ثبت نام" />
-            </div>
-          ) : (
-            <div className="flex flex-col justify-center items-center gap-4">
-              <h1 className="text-sm xl:text-xl w-full xl:w-2/3 text-center ">
-                {login.signin.text}
-              </h1>
-              <input
-                className="w-full xl:w-2/3 p-2 px-8 rounded-full bg-half-transparent focus:bg-white text-black focus:outline-none"
-                style={{ direction: "ltr" }}
-                type="email"
-                name="username"
-                id="username-input"
-                placeholder="Username or email"
-              />
-              <input
-                className="w-full xl:w-2/3 p-2 px-8 rounded-full bg-half-transparent focus:bg-white text-black focus:outline-none"
-                style={{ direction: "ltr" }}
-                type="password"
-                name="password"
-                id="password-input"
-                placeholder="Type your password"
-              />
-              <GlowingButton url="/" bgColor="#12a1ff" title="ورود" />
-            </div>
-          )}
+          <AnimatePresence>
+            {index == 0 ? (
+              <motion.div
+                key="signup-container"
+                varients={TopToDownChange}
+                initial={TopToDownChange.init}
+                animate={TopToDownChange.show}
+                exit={TopToDownChange.exit}>
+                <div className="flex flex-col justify-center items-center gap-8">
+                  <h1 className="text-sm xl:text-xl w-full xl:w-2/3 text-center ">
+                    {login.signup.text}
+                  </h1>
+                  <input
+                    className="w-full xl:w-2/3 p-2 px-8 rounded-full bg-half-transparent focus:bg-white text-black focus:outline-none"
+                    style={{ direction: "ltr" }}
+                    type="email"
+                    name="email"
+                    id="email-input"
+                    placeholder="example@mail.com"
+                  />
+                  <GlowingButton url="/" bgColor="#12a1ff" title="ثبت نام" />
+                </div>
+              </motion.div>
+
+            ) : (
+              <motion.div
+                key="login-container"
+                varients={TopToDownChange}
+                initial={TopToDownChange.init}
+                animate={TopToDownChange.show}
+                exit={TopToDownChange.exit}>
+                <div className="flex flex-col justify-center items-center gap-4">
+                  <h1 className="text-sm xl:text-xl w-full text-center ">
+                    {login.signin.text}
+                  </h1>
+                  <input
+                    className="w-full xl:w-2/3 p-2 px-8 rounded-full bg-half-transparent focus:bg-white text-black focus:outline-none"
+                    style={{ direction: "ltr" }}
+                    type="email"
+                    name="username"
+                    id="username-input"
+                    placeholder="Username or email"
+                  />
+                  <input
+                    className="w-full xl:w-2/3 p-2 px-8 rounded-full bg-half-transparent focus:bg-white text-black focus:outline-none"
+                    style={{ direction: "ltr" }}
+                    type="password"
+                    name="password"
+                    id="password-input"
+                    placeholder="Type your password"
+                  />
+                  <GlowingButton url="/" bgColor="#12a1ff" title="ورود" />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </div>
