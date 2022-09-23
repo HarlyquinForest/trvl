@@ -1,10 +1,10 @@
-import Navbar from '../common/modules/Navbar'
+import Navbar from "../common/modules/Navbar";
 
-const Page = () => { 
-  return( 
+const Page = () => {
+  return (
     <>
-      <Navbar/>
+      <Navbar />
     </>
-  )
-}
-export default Page
+  );
+};
+export default Page;
