@@ -26,7 +26,7 @@ const Navbar = () => {
         exit={TopToDownSm.exit}
         transition={{ delay: 1 }}
       >
-        <div className="flex flex-row justify-between items-center w-full gap-2 py-4 px-6 top-0 lg:px-32 font-vazir text-white bg-transparent">
+        <nav className="flex flex-row justify-between items-center absolute w-full gap-2 py-4 px-6 top-0 lg:px-32 font-vazir text-white bg-transparent">
           <Logo />
           {windowSize == "lg" ? (
             <>
@@ -78,7 +78,7 @@ const Navbar = () => {
                     initial={TopToDownLg.init}
                     animate={TopToDownLg.show}
                     exit={TopToDownLg.exit}
-                    className="absolute z-20 w-full h-full top-0 right-0 bg-dark-half-transparent firefox:bg-black backdrop-blur-lg"
+                    className="absolute z-20 w-full h-screen top-0 right-0 bg-dark-half-transparent firefox:bg-black backdrop-blur-lg"
                   >
                     <div className="flex flex-col justify-center items-center mt-10 py-6">
                       <NavItem url="/news" title="اخبار" />
@@ -92,7 +92,7 @@ const Navbar = () => {
               </div>
             </div>
           )}
-        </div>
+        </nav>
       </motion.div>
     </AnimatePresence>
   );
