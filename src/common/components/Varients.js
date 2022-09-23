@@ -18,3 +18,8 @@ export const FadeToExist = {
   init: { display: "none", opacity: 0.5 },
   exit: { display: "none", opacity: 0 },
 };
+export const TopToDownChange = {
+  init: { y: -20, opacity: 0 },
+  show: { y: 0, opacity: 1, transition: { delay: 0.2 } },
+  exit: { y: 20, opacity: 0, display: 'none', transition: { duration: 0.2 } },
+}
