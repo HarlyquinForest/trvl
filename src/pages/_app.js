@@ -3,10 +3,11 @@ import { Provider } from "react-redux";
 import "../../public/styles/global.css";
 import WindowSizeContext from "../common/features/WindowSize";
 function MyApp({ Component, pageProps, router }) {
+  const getLayout = Component.getLayout || ((page) => page)
   return (
     <Provider store={store}>
       <WindowSizeContext>
-        <Component {...pageProps} />
+        {getLayout(<Component {...pageProps} />)}
       </WindowSizeContext>
     </Provider>
   );
