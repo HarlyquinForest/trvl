@@ -1,26 +1,20 @@
-import { useState, useEffect } from "react";
-import { useSwipeable } from "react-swipeable";
+import { useState, useEffect, forwardRef } from "react";
 import { useSelector } from "react-redux";
 import Rating from "../components/Star";
 import Slide from "../components/Slide";
 
-function Carousel(props) {
+const Carousel = forwardRef((props, ref) => {
   const windowSize = useSelector((state) => state.windowSize.value);
   const [slideTotal, setSlideTotal] = useState(0);
   const [slides, setSlides] = useState([]);
   const [queue, setQueue] = useState([]);
-  const gap = windowSize === "lg" ? 280 : 150
-  const handlers = useSwipeable({
-    onSwipedLeft: () => { },
-    onSwipedRight: () => { },
-    preventDefaultTouchmoveEvent: true,
-    tackMouse: true,
-  });
-  var styles = {
+  const [play, setPlay] = useState(false);
+  const gap = windowSize === 'md' || windowSize === 'sm' ? '230' : 280
+  const styles = {
     deactive: "absolute -z-10 top-0 w-fit scale-90 transition-all ",
     active: "absolute z-0 top-0 right-0 w-fit scale-105 transition-all ",
   };
-  const playNextSlide = () => {
+  async function playNextSlide() {
     if (props.prev) queue.unshift(queue.pop());
     else queue.push(queue.shift());
     for (var i = 0; i < slideTotal; i++) {
@@ -33,7 +27,8 @@ function Carousel(props) {
         slides[i].style = { right: `${x}px` };
       }
     }
-  };
+    setPlay(false);
+  }
   useEffect(() => {
     const locSlides = [];
     var locQueue = [];
@@ -53,20 +48,24 @@ function Carousel(props) {
     setSlides(locSlides);
     setSlideTotal(index);
     setQueue(locQueue);
-    playNextSlide();
   }, [props.slides]);
 
   useEffect(() => {
-    if (slideTotal !== 0) playNextSlide();
+    if (slideTotal !== 0) {
+      setPlay(true);
+    }
   }, [props.slideCurrent]);
+  useEffect(() => {
+    if (play) playNextSlide().then();
+  }, [play]);
 
   return (
     <div
-      className="absolute inline-block top-16 right-[34%] xl:right-none w-full mr-0 xl:mr-80"
-      {...handlers}
+      className="absolute inline-block top-0 right-[23%] lg:right-[60%] w-full mr-0 "
+      ref={ref}
     >
       {slides && (
-        <div className="relative z-10 right-0 top-1 xl:top-[6rem] w-full h-fit transition-all">
+        <div className="relative z-10 right-0 top-6 w-full h-fit transition-all">
           <div className="absolute w-full transition-all">
             <div className="flex justify-start items-center w-full">
               {slides.map((slider, index) => (
@@ -85,5 +84,5 @@ function Carousel(props) {
       )}
     </div>
   );
-}
+});
 export default Carousel;
