@@ -1,6 +1,5 @@
 import Navbar from "../common/modules/Navbar";
 import Background from "../common/modules/Background";
-import Head from "next/head";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState, useRef } from "react";
 import useSwipeEvents from "beautiful-react-hooks/useSwipeEvents";
@@ -11,6 +10,7 @@ import Controlers from "../common/components/Controlers";
 import GlowingButton from "../common/components/GlowingButton";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { TopToDownSm } from "../common/components/Varients";
+import Layout from '../common/layout/Main'
 
 const Page = () => {
   const windowSize = useSelector((state) => state.windowSize.value);
@@ -51,18 +51,11 @@ const Page = () => {
 
   return (
     <div className="overflow-x-hidden">
-      <Head>
-        <meta name="viewport" content="width=device-width , initial-scale=1" />
-        <meta name="theme-color" content="#95DF5A" />
-        <link rel="shortcut icon" href="favicon.ico" />
-        <title>صحفه اصلی - تور گردشگری </title>
-      </Head>
       {tourist_areas.map((item, i) => (
         <Background img={item.country_img} active={index} keyProp={i} key={i} />
       ))}
-      <Navbar />
       <AnimatePresence>
-        <div className="w-full h-fit mt-2 xl:mt-12 font-vazir relative ">
+        <div className="w-full h-fit mt-12 xl:mt-32 font-vazir relative ">
           {windowSize === "lg" ? (
             <>
               <div className="gap-4 bg-dark-half-transparent firefox:bg-firefox-bg relative -z-10 inline-block p-8  w-8/12 h-screen max-h-[36rem] rounded-l-xl backdrop-blur-lg ">
@@ -155,5 +148,12 @@ const Page = () => {
     </div>
   );
 };
+Page.getLayout = function getLayout(page) {
+  return (
+    <Layout title={'صفحه اصلی'} >
+      {page}
+    </Layout >
+  )
+}
 
 export default Page;
